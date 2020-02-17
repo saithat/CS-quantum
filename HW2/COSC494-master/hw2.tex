@@ -1,0 +1,138 @@
+\documentclass[letterpaper]{article}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage[a4paper, margin=2.54cm]{geometry}
+\newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{def}}}{=}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\input{Qcircuit}
+\pagestyle{fancy}
+\lhead{Ria Patel} % controls the left corner of the header
+\chead{HW2} % controls the center of the header
+\rhead{Intro. to Quantum Info. S2020} % controls the right corner of the header
+\lfoot{} % controls the left corner of the footer
+\cfoot{} % controls the center of the footer
+\rfoot{Page~\thepage} % controls the right corner of the footer
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+\begin{section}{Exercise 2.1}
+Which of the following two states can be written as a product state? Give proofs of your answers.
+  \begin{equation*}
+      |\psi_{1}\rangle = \frac{36}{65}|00\rangle + \frac{48}{65}|01\rangle - \frac{3}{13}|10\rangle + \frac{4}{13}|11\rangle,
+  \end{equation*}
+  \begin{equation*}
+      |\psi_{2}\rangle = \frac{36}{65}|00\rangle + \frac{48i}{65}|01\rangle - \frac{3}{13}|10\rangle + \frac{4i}{13}|11\rangle
+  \end{equation*}
+\end{section}
+\begin{section}{Exercise 2.2}
+  \begin{enumerate}[label=(\emph{\alph*})]
+    \item Compute the unitary matrix corresponding to each of the following quantum circuits:
+    \begin{equation*}
+        \Qcircuit @C=1em @R=.7em {
+        & \qw & \gate{H} & \targ & \gate{H} & \qw & \qw \\
+        & \gate{X} & \qw & \ctrl{-1} & \qw & \gate{H} & \qw 
+        } 
+        \quad\quad\quad
+        \Qcircuit @C=1em @R=.7em {
+        & \qw & \ctrl{1} & \qw & \qw \\
+        & \gate{H} & \targ & \gate{H} & \qw
+        }
+        \quad\quad\quad
+        \Qcircuit @C=1em @R=.7em {
+        & \gate{H} & \targ & \gate{H} & \qw \\
+        & \qw & \ctrl{-1} & \qw & \qw
+        }
+    \end{equation*}
+    \newline
+    \item Give an equivalent quantum circuit to the following circuit, using fewer gates, where the gates can be either \textit{H} or \textit{CX}.
+        \begin{equation*}
+            \Qcircuit @C=1em @R=.7em {
+        & \qw & \gate{H} & \targ & \gate{H} & \qw & \qw \\
+        & \gate{H} & \qw & \ctrl{-1} & \qw & \gate{H} & \qw 
+        }
+        \end{equation*}
+    \newline
+  \end{enumerate}
+\end{section}
+
+\begin{section}{Exercise 2.3}
+  \begin{enumerate}[label=(\emph{\alph*})]
+    \item Alicia’s quantum computer is “working too well” and instead of computing one \textit{CX} gate, it computes three \textit{CX} gates at once as shown in the following circuit:
+    \begin{equation*}
+        \Qcircuit @C=1em @R=.7em {
+        & \qw & \ctrl{1} & \qw & \targ & \qw & \ctrl{1} & \qw & \qw \\
+        &\qw & \targ & \qw & \ctrl{-1} & \qw & \targ & \qw & \qw
+        }
+    \end{equation*}
+    Describe the action of this circuit on an input $|xy\rangle$, where x, y $\in \{0,1\}$. For the input $|x0\rangle$ (i.e., y = 0), show that the circuit can be reduced to just two gates, where the gates are either \textit{CX} or elementary single-qubit gates.
+    \newline
+    \item Berthold’s quantum computer is “stuck in forward” mode:  it can apply a \textit{CX} gate from qubit 1 to qubit 2, but not vice versa.  On the other hand, single-qubit operations work fine and he is able to apply any such operation. How can Berthold still apply a \textit{CX} gate from qubit 2 to qubit 1?
+    \item Cecelia claims that she invented a cloning machine that maps
+    \begin{equation*}
+        |\psi\rangle|0\rangle|g\rangle \mapsto |\psi\rangle|\psi\rangle|g'\rangle
+    \end{equation*}
+    for all states $|\psi \rangle$, where $|g\rangle$ is an input state that is independent of $|\psi\rangle$, and $|g\prime\rangle$ is an arbitrary state. Do you believe her? Give a proof of your answer.
+  \end{enumerate}
+\end{section}
+\begin{section}{Exercise 2.4}
+    \begin{enumerate}[label=(\emph{\alph*})]
+        \item Simplify the following 6 quantum circuits by rewriting each one of them using at most 2 elementary quantum gates (i.e., \textit{CX} or single-qubit gates):
+        \begin{equation*}
+            \Qcircuit @C=1em @R=.7em {
+            & \ctrl{1} & \qw & \ctrl{1} & \qw \\
+            & \targ & \gate{X} & \targ & \qw
+            }
+            \quad\quad
+            \Qcircuit @C=1em @R=.7em {
+            & \gate{X} & \ctrl{1} & \gate{X} & \qw & \qw \\
+            & \qw & \targ & \qw & \gate{X} & \qw
+            }
+            \quad\quad
+            \Qcircuit @C=1em @R=.7em {
+            & \gate{X} & \gate{Z} & \gate{X} & \qw & \qw & \qw & \qw \\
+            & \qw & \qw & \qw & \gate{Z} & \gate{X} & \gate{Z} & \qw
+            }
+        \end{equation*}
+        \begin{equation*}
+            \Qcircuit @C=1em @R=.7em {
+            & \qw & \ctrl{1} & \qw & \qw \\
+            & \gate{H} & \gate{Z} & \gate{H} & \qw
+            }
+            \quad\quad
+            \Qcircuit @C=1em @R=.7em {
+            & \gate{Z} & \targ & \qw & \qw \\
+            & \qw & \ctrl{-1} & \gate{Z} & \qw
+            }
+            \quad\quad
+            \Qcircuit @C=1em @R=.7em {
+            & \gate{H} & \qw & \ctrl{1} & \qw & \gate{H} & \qw \\
+            & \qw & \gate{H} & \targ & \gate{H} & \qw & \qw
+            }
+        \end{equation*}
+        \item Determine the output state of the following circuit, provided that the input is given by $|xyz00\rangle$, with $x,y,z \in \{0,1\}$:
+        \begin{equation*}
+            \Qcircuit @C=1em @R=.7em {
+            \lstick{\ket{x}} & \ctrl{3} & \qw & \qw & \ctrl{4} & \qw & \qw \\
+            \lstick{\ket{y}} & \qw & \qw & \ctrl{2} & \qw & \qw & \qw \\
+            \lstick{\ket{z}} & \qw & \qw & \qw & \qw & \ctrl{2} & \qw \\
+            \lstick{\ket{0}} & \targ & \qw & \targ & \qw & \qw & \qw \\
+            \lstick{\ket{0}} & \qw & \qw & \qw & \targ & \targ & \qw 
+            }
+        \end{equation*}
+    \end{enumerate}
+\end{section}
+\begin{section}{Exercise 2.5}
+Let \textit{P} be the operation which is defined by
+\begin{equation*}
+    P|x\rangle = \big|(x+1) \textnormal{ mod } 8\big\rangle, x \in \{0,1,2,3,4,5,6,7\}.
+\end{equation*}
+    \begin{enumerate}[label=(\emph{\alph*})]
+        \item Show that \textit{P} is a unitary matrix and find its inverse.
+        \item Find the matrices \textit{$P^2$, $P^3$, $P^4$, $P^5$, $P^6$, $P^7$, $P^8$}.
+        \item Draw a quantum circuit that implements \textit{P} using only the gates \textit{CCX, CX, X.}
+    \end{enumerate}
+\end{section}
+\end{document}
